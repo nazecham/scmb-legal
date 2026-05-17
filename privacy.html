@@ -4,19 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy - Waves</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body { max-width: 760px; margin: 60px auto; padding: 0 24px; font-family: system-ui, sans-serif; line-height: 1.7; color: #1a1a1a; }
+    h1 { font-size: 2rem; margin-bottom: 4px; }
+    h2 { font-size: 1.2rem; margin-top: 2rem; }
+    .meta { color: #666; font-size: 0.9rem; margin-bottom: 2.5rem; }
+    a { color: #1DB954; }
+    hr { border: none; border-top: 1px solid #eee; margin: 2.5rem 0; }
+  </style>
 </head>
 <body>
   <h1>Privacy Policy</h1>
-  <p class="meta">Waves &nbsp;·&nbsp; Last updated: May 2026 &nbsp;·&nbsp; Operated from Canada &nbsp;·&nbsp; <a href="./index.html">Index</a></p>
+  <p class="meta">Waves &nbsp;·&nbsp; Last updated: May 2026 &nbsp;·&nbsp; Operated from Canada &nbsp;·&nbsp; <a href="https://nazecham.github.io/waves-legal/index.html">Index</a></p>
 
   <h2>1. What We Collect</h2>
   <p>Waves collects the minimum data necessary to function:</p>
   <ul>
-    <li><strong>Discord User ID and username</strong> — recorded alongside song requests and command usage to attribute activity in the bot's internal dashboard. This is held in memory only and is not written to any database or persistent file.</li>
-    <li><strong>Discord Guild (server) ID and name</strong> — used to associate activity with the correct server. Also held in memory only.</li>
+    <li><strong>Discord User ID and username</strong> — recorded alongside song requests and command usage to attribute activity in the bot's internal dashboard. Most of this is held in memory only. When a command results in an error, the user ID, username, command name, and error message are written to a persistent log file (<code>errors.log</code>) on the host server for debugging purposes.</li>
+    <li><strong>Discord Guild (server) ID and name</strong> — used to associate activity with the correct server. Held in memory only.</li>
     <li><strong>Song request history</strong> — track titles and URLs of songs requested through the bot, stored in memory for dashboard display. This data is cleared when the bot restarts.</li>
-    <li><strong>Command usage</strong> — a record of which slash commands were used, by whom, and whether they succeeded. Also in-memory only.</li>
+    <li><strong>Command usage</strong> — a record of which slash commands were used, by whom, and whether they succeeded. Held in memory only, except in error cases as described above.</li>
   </ul>
   <p>We do not collect message content, voice audio, or any data beyond what is described above.</p>
 
@@ -29,11 +36,16 @@
   </ul>
 
   <h2>3. How Data Is Used</h2>
-  <p>Data collected is used solely to operate the bot — displaying queue history and command stats in the operator dashboard. It is not used for advertising, profiling, or any purpose beyond bot functionality.</p>
+  <p>Data collected is used solely to operate the bot — displaying queue history and command stats in the operator dashboard, and diagnosing errors. It is not used for advertising, profiling, or any purpose beyond bot functionality.</p>
 
   <h2>4. Data Retention</h2>
-  <p>All user-associated data (user IDs, usernames, song history, command logs) is held in memory only and is permanently deleted whenever the bot restarts. No user data is written to disk.</p>
-  <p>Operational log files (<code>bot.log</code>, <code>uvicorn.log</code>) may be retained on the host server for debugging purposes. These logs record system events and do not contain personally identifiable information beyond what Discord's platform itself transmits.</p>
+  <p>Most user-associated data (user IDs, usernames, song history, command logs) is held in memory only and is permanently deleted whenever the bot restarts.</p>
+  <p>The following files are retained on the host server:</p>
+  <ul>
+    <li><code>bot.log</code> and <code>uvicorn.log</code> — operational logs recording system events. These do not contain personally identifiable information beyond what Discord's platform itself transmits.</li>
+    <li><code>errors.log</code> — records failed command attempts, including the timestamp, command name, error message, Discord user ID, and username of the user whose action caused the error. This data is retained for development and debugging purposes and is stored on a privately operated server.</li>
+  </ul>
+  <p>There is no automatic deletion schedule for these files at this time. You may request deletion of your data by contacting us via the support server linked in <code>/about</code>.</p>
 
   <h2>5. Third-Party Services</h2>
   <p>Waves interacts with the following third-party services to function:</p>
@@ -49,7 +61,7 @@
     <li>Know what personal information we hold about you</li>
     <li>Request correction or deletion of your data</li>
   </ul>
-  <p>Given that all user data is held in memory only and clears on restart, there is typically no persistent data to access or delete. If you have concerns, contact us via the support server linked in the bot's <code>/about</code> command.</p>
+  <p>If you have concerns or wish to request deletion of any data held about you (such as entries in <code>errors.log</code>), contact us via the support server linked in the bot's <code>/about</code> command.</p>
 
   <h2>7. Changes to This Policy</h2>
   <p>We may update this policy from time to time. Continued use of the bot after changes constitutes acceptance of the updated policy. The "last updated" date at the top of this page will reflect any changes.</p>
